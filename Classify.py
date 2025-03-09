@@ -5,6 +5,7 @@ import io
 import os
 import zipfile
 import gdown
+import pandas as pd
 # ---------------------------------------------
 # device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 # device = torch.device("cpu")
