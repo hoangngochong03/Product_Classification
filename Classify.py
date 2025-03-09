@@ -52,13 +52,7 @@ st.title("Classify Product")
 st.markdown("Danh mục: **" + " | ".join(categories.values()) + "**")
 uploaded_file = st.file_uploader("Upload a excel, csv file( Có chứa cột |Tên sản phẩm|)", type=["csv","xlsx"])
 product=st.text_input("Tên sản phẩm: ")
-if product: 
-    inputs = tokenizer(product, return_tensors="pt").to(device)
-    outputs = model(**inputs)
-    prediction = outputs.logits.argmax(dim=-1)
-    st.write("Phân loại: ",categories[prediction[0].item()])
-
-elif uploaded_file is not None:
+if uploaded_file is not None:
     if uploaded_file.name.endswith('.csv'):
         df = pd.read_csv(uploaded_file)
     elif uploaded_file.name.endswith('.xlsx'):
@@ -75,6 +69,11 @@ elif uploaded_file is not None:
         df['Prediction'] = df['Tên sản phẩm'].apply(classify_product)
 
         st.write(df)
+elif product: 
+    inputs = tokenizer(product, return_tensors="pt").to(device)
+    outputs = model(**inputs)
+    prediction = outputs.logits.argmax(dim=-1)
+    st.write("Phân loại: ",categories[prediction[0].item()])
 
     output = io.BytesIO()
 
