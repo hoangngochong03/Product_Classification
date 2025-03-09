@@ -49,7 +49,6 @@ print(f'Model is loaded and moved to: {device}')
 categories={0: 'Cà phê', 1: 'Fast food', 2: 'Học phí', 3: 'Nước ép', 4: 'Quần áo', 5: 'Rau củ', 6: 'Taxi', 7: 'Thuốc men', 8: 'Thức ăn thú cưng', 9: 'Trà', 10: 'Vé máy bay'}
 
 st.title("Classify Product")
-st.write("Danh mục:", " | ".join(categories.values()))
 st.markdown("Danh mục: **" + " | ".join(categories.values()) + "**")
 uploaded_file = st.file_uploader("Upload a CSV file( Có chứa cột (Tên Sản Phẩm)", type=["csv","xlsx"])
 product=st.text_input("Tên sản phẩm: ")
