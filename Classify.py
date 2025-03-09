@@ -50,7 +50,7 @@ categories={0: 'Cà phê', 1: 'Fast food', 2: 'Học phí', 3: 'Nước ép', 4:
 
 st.title("Classify Product")
 st.markdown("Danh mục: **" + " | ".join(categories.values()) + "**")
-uploaded_file = st.file_uploader("Upload a CSV file( Có chứa cột (Tên Sản Phẩm)", type=["csv","xlsx"])
+uploaded_file = st.file_uploader("Upload a CSV file( Có chứa cột |Tên Sản Phẩm|)", type=["csv","xlsx"])
 product=st.text_input("Tên sản phẩm: ")
 if product: 
     inputs = tokenizer(product, return_tensors="pt").to(device)
