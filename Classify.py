@@ -69,11 +69,7 @@ if uploaded_file is not None:
         df['Prediction'] = df['Tên sản phẩm'].apply(classify_product)
 
         st.write(df)
-elif product: 
-    inputs = tokenizer(product, return_tensors="pt").to(device)
-    outputs = model(**inputs)
-    prediction = outputs.logits.argmax(dim=-1)
-    st.write("Phân loại: ",categories[prediction[0].item()])
+
 
     output = io.BytesIO()
 
@@ -91,3 +87,8 @@ elif product:
         file_name="classified_products.xlsx",
         mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
 )
+elif product: 
+    inputs = tokenizer(product, return_tensors="pt").to(device)
+    outputs = model(**inputs)
+    prediction = outputs.logits.argmax(dim=-1)
+    st.write("Phân loại: ",categories[prediction[0].item()])
